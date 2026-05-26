@@ -48,6 +48,7 @@ export default function page() {
             currentPointsRef.current = [...placedPointsRef.current]
             clearPreview(sceneRef.current!, previewDotsRef.current!, previewLineRef.current)
             placedPointsRef.current = []
+            setPointCount(0)
             
             stateRef.current = 'transforming'
             setDemoState('transforming')
@@ -226,21 +227,35 @@ export default function page() {
         return () => {
             cancelAnimationFrame(animFrameID)
             window.removeEventListener('resize', handleResize)
-            scene.remove(...gridObjects)
-            gridObjects.forEach(g => g.geometry.dispose())
-            scene.remove(...majorGridObjects)
-            majorGridObjects.forEach(g => g.geometry.dispose())
+
             scene.remove(axes.xAxis)
             axes.xAxis.geometry.dispose()
+            axes.xAxis.material.dispose()
+
             scene.remove(axes.yAxis)
             axes.yAxis.geometry.dispose()
+            axes.yAxis.material.dispose()
+
+            scene.remove(gridObjects)
+            gridObjects.geometry.dispose()
+            gridObjects.material.dispose()
+
+            scene.remove(majorGridObjects)
+            majorGridObjects.geometry.dispose()
+            majorGridObjects.material.dispose()
+
             scene.remove(previewDot)
+            previewDot.geometry.dispose()
+            previewDot.material.dispose()
+
+            scene.remove(previewLineRef.current)
+
             mount.removeEventListener('click', handleCanvasClick)
             mount.removeEventListener('mousemove', handleMouseMove)
             mount.removeChild(renderer.domElement)
             renderer.dispose()
-        };
-    }, []);
+        }
+    }, [])
 
     return (
         <div className="relative w-screen h-screen overflow-hidden items-center">

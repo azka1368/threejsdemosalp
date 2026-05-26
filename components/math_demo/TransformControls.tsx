@@ -56,87 +56,83 @@ export default function TransformControls({ onTranslate, onDilate, onRotate, onR
     return (
         <div className="space-x-2">
             <button
-            className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => setActiveTransform('translate')}>
                 Translate
             </button>
             <button
-            className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => setActiveTransform('dilate')}>
                 Dilate
             </button>
             <button
-            className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => setActiveTransform('rotate')}>
                 Rotate
             </button>
             <button
-            className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => setActiveTransform('reflect')}>
                 Reflect
             </button>
             <button
-            className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             onClick={onReset}>
                 Reset
             </button>
             <button
-            className="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             onClick={onNewShape}>
                 New Shape
             </button>
             {activeTransform === 'translate' && (
-                <div className="mt-2 flex items-center space-x-2">
-                    <label className="text-sm font-bold">x:</label>
+                <div className="mt-2 p-2 flex w-max items-center space-x-2 bg-blue-600 rounded">
+                    <label className="text-sm font-bold text-white">x:</label>
                     <input
-                        type="number"
                         value={txInput}
                         onChange={e => setTxInput(e.target.value)}
-                        className="w-16 border rounded px-1 py-0.5 text-sm"
+                        className="w-16 border rounded px-1 py-0.5 text-sm text-white"
                     />
-                    <label className="text-sm font-bold">y:</label>
+                    <label className="text-sm font-bold text-white">y:</label>
                     <input
-                        type="number"
                         value={tyInput}
                         onChange={e => setTyInput(e.target.value)}
-                        className="w-16 border rounded px-1 py-0.5 text-sm"
+                        className="w-16 border rounded px-1 py-0.5 text-sm text-white"
                     />
                     <ApplyOrCancel onClickApply={handleTranslate} onClickCancel={() => setActiveTransform(null)} />
                 </div>
             )}
             {activeTransform === 'dilate' && (
-                <div className="mt-2 flex items-center space-x-2">
-                    <label className="text-sm font-bold">Factor:</label>
+                <div className="mt-2 p-2 flex w-max items-center space-x-2 bg-blue-600 rounded">
+                    <label className="text-sm font-bold text-white">Factor:</label>
                     <input
-                        type="number"
                         value={kInput}
                         onChange={e => setKInput(e.target.value)}
-                        className="w-16 border rounded px-1 py-0.5 text-sm"
+                        className="w-16 border rounded px-1 py-0.5 text-sm text-white"
                     />
                     <ApplyOrCancel onClickApply={handleDilate} onClickCancel={() => setActiveTransform(null)} />
                 </div>
             )}
             {activeTransform === 'rotate' && (
-                <div className="mt-2 flex items-center space-x-2">
-                    <label className="text-sm font-bold">Angle(rad):</label>
+                <div className="mt-2 p-2 flex w-max items-center space-x-2 bg-blue-600 rounded">
+                    <label className="text-sm font-bold text-white">Angle(rad):</label>
                     <input
-                        type="number"
                         value={tInput}
                         onChange={e => setTInput(e.target.value)}
-                        className="w-16 border rounded px-1 py-0.5 text-sm"
+                        className="w-16 border rounded px-1 py-0.5 text-sm text-white"
                     />
                     <ApplyOrCancel onClickApply={handleRotate} onClickCancel={() => setActiveTransform(null)} />
                 </div>
             )}
             {activeTransform === 'reflect' && (
-                <div className="mt-2 flex items-center space-x-2">
-                    <label className="text-sm font-bold">x:</label>
+                <div className="mt-2 p-2 flex w-max items-center space-x-2 bg-blue-600 rounded">
+                    <label className="text-sm font-bold text-white">x:</label>
                     <input
                         type="checkbox"
                         checked={rfX}
                         onChange={e => setRfX(e.target.checked)}
                     />
-                    <label className="text-sm font-bold">y:</label>
+                    <label className="text-sm font-bold text-white">y:</label>
                     <input
                         type="checkbox"
                         checked={rfY}
